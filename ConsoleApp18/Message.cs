@@ -2,29 +2,24 @@
 
 namespace ConsoleApp18
 {
+
     public class Message
     {
-        public string Name { get; set; }
+        public string FromName { get; set; }
         public string Text { get; set; }
 
+        public string ToName { get; set; }
         public DateTime Time { get; set; }
+ 
+
 
         public Message(string nik, string text)
         {
-            Name = nik;
+            FromName = nik;
             Text = text;
             Time = DateTime.Now;
         }
 
-        public string ToJson()
-        {
-            return JsonSerializer.Serialize(this);
-        }
-
-        public static Message? FromJson(string some)
-        {
-            return JsonSerializer.Deserialize<Message>(some);
-        }
 
         public Message()
         {
@@ -33,7 +28,7 @@ namespace ConsoleApp18
 
         public override string ToString()
         {
-            return $"Получено сообщение от {Name}({Time.ToString()})\n{Text}";
+            return $">> To get a message from {FromName}({Time.ToString()})\n>>{Text}";
         }
 
     }
